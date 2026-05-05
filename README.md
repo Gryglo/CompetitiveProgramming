@@ -1,2 +1,2 @@
 # CompetetiveProgramming
-My codes for competetive programming tasks in C++
+My codes for competitive programming tasks in C++
