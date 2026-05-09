@@ -6,3 +6,5 @@
 !*.sh
 !*.c
 !*.h
+!*.json
+!*.code-workspace
