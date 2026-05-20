@@ -10,7 +10,7 @@ The project is organized into several directories based on the source of the pro
 - **[oboz/](./oboz/)**: Problems and materials from various **Competitive Programming Camps** (*Obozy*), such as:
   - *Krzyżowa* (2023, 2025)
   - *Szklarska Poręba* (2026)
-- **[CF/](./CF/)**: Solutions for **Codeforces** contests and individual problems, including specific events like *GoodBye 2025*.
+- **[CF/](./CF/)**: Solutions for **Codeforces** contests and individual problems.
 - **[sparingi/](./sparingi/)**: Practice contests.
 
 ## 🛠️ Workflow
