@@ -21,8 +21,11 @@ vector<ll> p;
 vector<pii> dp_max;
 vector<pii> dp_min;
 
-void DFS(int v, int p)
+vector<bool> vis;
+
+void DFS(int v)
 {
+    vis[v] = true;
     if(adj[v].size() == 0)
     {
         if(v == n) { dp_max[v] = {1, -1}; dp_min[v] = {1, -1}; }
@@ -33,8 +36,7 @@ void DFS(int v, int p)
     pii min_v = {INF, -1};
     for(int u : adj[v])
     {
-        if(u == p) continue;
-        DFS(u, v);
+        if(!vis[u]) DFS(u);
         if(max_v < dp_max[u])
             max_v = { dp_max[u].f, u };
         if(min_v > dp_min[u])
@@ -115,6 +117,7 @@ void init()
     compute_hashes();
     dp_max.resize(n + 1);
     dp_min.resize(n + 1);
+    vis.resize(n + 1);
 }
 
 int main()
@@ -124,7 +127,7 @@ int main()
     init();
     if(n % 2 != 0) { cout << "NIE"; return 0; }
     create_graph();
-    DFS(0, -1);
+    DFS(0);
     if(dp_max[0].s == -1)
     {
         cout << "NIE";
