@@ -6,8 +6,8 @@ A comprehensive collection of my solutions and implementations for various compe
 
 The project is organized into several directories based on the source of the problems:
 
-- **[OI/](./OI/) & [OI_XXXIII/](./OI_XXXIII/)**: Solutions for the **Polish Olympiad in Informatics** (*Olimpiada Informatyczna*).
-- **[oboz/](./oboz/)**: Problems and materials from various **Competitive Programming Camps** (*Obozy*), such as:
+- **[OI/](./OI/)**: Solutions for the **Polish Olympiad in Informatics** (*Olimpiada Informatyczna*).
+- **[oboz/](./oboz/)**: Problems from **Competitive Programming Camps**, such as:
   - *Krzyżowa* (2023, 2025)
   - *Szklarska Poręba* (2026)
 - **[CF/](./CF/)**: Solutions for **Codeforces** contests and individual problems.
@@ -15,8 +15,8 @@ The project is organized into several directories based on the source of the pro
 
 ## 🛠️ Workflow
 
-- **Language**: Primarily C++.
-- **Environment**: Developed using Visual Studio Code.
+- **Language**: C++.
+- **Environment**: Visual Studio Code.
 - **Testing Scripts**: Shell scripts (`.sh`) for automated testing.
 
 ## 📈 Goals
