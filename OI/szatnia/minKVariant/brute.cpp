@@ -26,7 +26,7 @@ int main()
         int a = m, b = m + s;
         bool res = false;
         for(int x = 0; x < n; x++)
-            if(item_end[x].f <= a && b < item_end[x].s && item_c[x] == k)
+            if(item_end[x].f <= a && b < item_end[x].s && item_c[x] >= k)
             {
                 res = true;
                 break;
