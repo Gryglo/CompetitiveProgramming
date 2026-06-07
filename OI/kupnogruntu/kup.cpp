@@ -134,7 +134,6 @@ int main()
         cout << "NIE";
         return 0;
     }
-
     square ans = find_answear(target_area);
     cout << ans.f.s + 1 << ' ' << ans.f.f + 1 << ' ' << ans.s.s + 1 << ' ' << ans.s.f + 1;
     return 0;
