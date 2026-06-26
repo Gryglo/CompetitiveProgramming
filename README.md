@@ -7,10 +7,9 @@ A comprehensive collection of my solutions and implementations for various compe
 The project is organized into several directories based on the source of the problems:
 
 - **[OI/](./OI/)**: Solutions for the **Polish Olympiad in Informatics** (*Olimpiada Informatyczna*).
-- **[oboz/](./oboz/)**: Problems from **Competitive Programming Camps**, such as:
+- **[obozy/](./obozy/)**: Problems from **Competitive Programming Camps**, such as:
   - *Krzyżowa* (2023, 2025)
   - *Szklarska Poręba* (2026)
-- **[CF/](./CF/)**: Solutions for **Codeforces** contests and individual problems.
 - **[sparingi/](./sparingi/)**: Practice contests.
 
 ## 🛠️ Workflow
