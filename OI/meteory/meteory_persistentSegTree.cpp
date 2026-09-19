@@ -15,16 +15,8 @@ struct Vertex
     ll sum = 0;
     Vertex* l = nullptr;
     Vertex* r = nullptr;
-
-    Vertex(ll sum)
-    {
-        this->sum = sum;
-    }
-    Vertex(Vertex* l, Vertex* r)
-    {
-        this->l = l;
-        this->r = r;
-    }
+    Vertex(ll sum) { this->sum = sum; }
+    Vertex(Vertex* l, Vertex* r) { this->l = l; this->r = r; }
 };
 
 struct Tree
@@ -59,12 +51,9 @@ struct Tree
         int m = (l + r) / 2;
         return new Vertex(build(l, m), build(m + 1, r));
     }
-    
-    ll query(int i, int t_idx)
-    {
-        return query(roots[t_idx], 0, m - 1, i);
-    }
 
+    ll query(int i, int t_idx) { return query(roots[t_idx], 0, m - 1, i); }
+    
     void build()
     {
         roots.resize(q + 1);
