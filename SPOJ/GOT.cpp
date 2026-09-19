@@ -125,32 +125,38 @@ bool is_on_path(int a, int b, int x)
 
 void init()
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cin >> n >> q;
-    val.resize(n);
+    timer = 0;
+    euler_tour.clear();
+    val.assign(n, 0);
+    adj.assign(n, vector<int>());
+    tin.assign(n, 0); tout.assign(n, 0);
+    depth.assign(n, 0);
+    up.assign(MAXLOG + 1, vector<int>(n, 0));
     for(int i = 0; i < n; i++) cin >> val[i];
-    adj.resize(n);
     for(int i = 0; i < n - 1; i++)
     {
         int a, b; cin >> a >> b; a--; b--;
         adj[a].push_back(b);
         adj[b].push_back(a);
     }
-    tin.resize(n); tout.resize(n);
-    depth.resize(n);
-    up.resize(26, vector<int>(n));
     DFS(0, -1);
     tree.build();
 }
 int32_t main()
 {
-    init();
-    for(int i = 0; i < q; i++)
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    while(cin >> n >> q)
     {
-        int a, b, x; cin >> a >> b >> x; a--; b--;
-        int v_lca = LCA(a, b);
-        if(is_on_path(v_lca, a, x) || is_on_path(v_lca, b, x)) cout << "Find\n";
-        else cout << "NotFind\n";
+        init();
+        for(int i = 0; i < q; i++)
+        {
+            int a, b, x; cin >> a >> b >> x; a--; b--;
+            int v_lca = LCA(a, b);
+            if(is_on_path(v_lca, a, x) || is_on_path(v_lca, b, x)) cout << "Find\n";
+            else cout << "NotFind\n";
+        }
+        cout << '\n';
     }
+    return 0;
 }   
