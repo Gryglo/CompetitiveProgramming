@@ -56,6 +56,8 @@ struct Vertex
     Vertex* l = nullptr;
     Vertex* r = nullptr;
 
+    Vertex(){}
+
     Vertex(int cnt)
     { this->cnt = cnt; }
 
@@ -65,7 +67,17 @@ struct Vertex
         this->r = r;
         cnt = l->cnt + r->cnt;
     }
+
+    void* operator new(size_t size);
 };
+
+Vertex pool[4000000];
+int pool_ptr = 0;
+
+void* Vertex::operator new(size_t size)
+{
+    return &pool[pool_ptr++];
+}
 
 struct Tree
 {
@@ -125,6 +137,7 @@ bool is_on_path(int a, int b, int x)
 
 void init()
 {
+    pool_ptr = 0;
     timer = 0;
     euler_tour.clear();
     val.assign(n, 0);
