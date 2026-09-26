@@ -8,7 +8,8 @@ void solve()
     vector<int> a(n);
     vector<int> a_cnt(101);
     bool ans = false;
-    if(n > 100) ans = true;
+    //if(n > 100) ans = true;
+    if(n > 10) ans = true; // to tez dziala
     for(int i = 0; i < n; i++) 
     {
         cin >> a[i];
