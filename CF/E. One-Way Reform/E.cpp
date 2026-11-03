@@ -1,79 +1,61 @@
 #include <bits/stdc++.h>
 #define int long long
 using namespace std;
+vector<vector<bool>> vis;
+vector<vector<int>> adj;
+vector<vector<int>> adj_dir;
+vector<bool> added;
+void euler_tour(int v, int n)
+{
+    added[v] = true;
+    while(adj[v].size() > 0)
+    {
+        int u = adj[v].back();
+        adj[v].pop_back();
+        if(vis[v][u] || vis[u][v]) continue;
+        vis[v][u] = true; vis[u][v] = true;
+        euler_tour(u, n);
+        if(v != n && u != n)
+            adj_dir[v].push_back(u);
+    }
+}
 
 void solve()
 {
     int n, m; cin >> n >> m;
-    vector<vector<bool>> adj(n, vector<bool>(n));
-    vector<int> tin(n), tout(n);
-    vector<int> cnt(n);
+    adj.assign(n + 1, vector<int>());
+    adj_dir.assign(n + 1, vector<int>());
+    vis.assign(n + 1, vector<bool>(n + 1));
+    added.assign(n + 1, false);
     for(int i = 0; i < m; i++)
     {
         int a, b; cin >> a >> b; a--; b--;
-        adj[a][b] = true;
-        adj[b][a] = true;
-        cnt[a]++;
-        cnt[b]++;
+        adj[a].push_back(b);
+        adj[b].push_back(a);
     }
-    vector<vector<int>> g(n);
-    bool finito = false;
-    while(!finito)
+    int ans = 0;
+    for(int i = 0; i < n; i++)
     {
-        finito = true;
-        queue<int> q;
-        vector<bool> vis;
-        for(int i = 0; i < n; i++)
+        if(adj[i].size() % 2 != 0)
         {
-            if(cnt[i] % 2 == 0)
-            {
-                finito = false;
-                q.push(i);
-                break;
-            }
+            adj[i].push_back(n);
+            adj[n].push_back(i);
         }
-
-        while(!q.empty())
-        {
-            int v = q.front();
-            q.pop();
-            for(int u = 0; u < n; u++)
-            {
-                if(!adj[v][u]) continue;
-                adj[v][u] = false;
-                adj[u][v] = false;
-                cnt[v]--;
-                cnt[u]--;
-                if(cnt[u] % 2 == 0)
-                {
-                    g[v].push_back(u);
-                    q.push(u);
-                }
-                tout[v]++;
-                tin[u]++;
-            }   
-            if(cnt[v] % 2 != 0)
-            {   
-                for(int u = 0; u < n; u++)
-                {
-                    if(!adj[v][u]) continue;
-                    cnt[v]--;
-                    cnt[u]--;
-                    if(cnt[u] % 2 == 0)
-                    {
-                        g[u].push_back(v);
-                        q.push(u);
-                    }
-                    tout[u]++;
-                    tin[v]++;
-                }   
-            }
-        }
+        else ans++;
     }
+    euler_tour(n, n);
+    for(int i = 0; i < n; i++)
+        if(!added[i]) euler_tour(i, n);
+    cout << ans << '\n';
+    for(int i = 0; i < n; i++)
+        for(int u : adj_dir[i]) 
+            cout << i + 1 << ' ' << u + 1 << '\n';
 }
 
 int32_t main()
 {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
     int t; cin >> t;
     while(t--) solve();
     return 0;
